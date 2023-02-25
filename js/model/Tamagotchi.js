@@ -30,7 +30,7 @@ export class Tamagotchi {
         this.#interval = setInterval(() => {
             if (this.#happiness <= 0 || this.#hunger >= 10) {
                 this.#alive = false;
-                this.#img.src = `/./imgs/${this.#type}_3.gif`
+                this.#img.src = `/FE22-js2-mp2-Viktor-Johansson/imgs/${this.#type}_3.gif`
                 setTimeout(() => {
                     this.#user.deleteTamagotchi(this);
                 }, 5000)
@@ -64,10 +64,10 @@ export class Tamagotchi {
 
     #setImage(index) {
         this.#imgNumber = index;
-        this.#img.src = `/./imgs/${this.#type}_${index}.gif`
+        this.#img.src = `/FE22-js2-mp2-Viktor-Johansson/imgs/${this.#type}_${index}.gif`
         
         setTimeout(() => {
-            this.#img.src = `/./imgs/${this.#type}_0.gif`
+            this.#img.src = `/FE22-js2-mp2-Viktor-Johansson/imgs/${this.#type}_0.gif`
         }, index == 4 ? 1500 : 3000)
     }
 
