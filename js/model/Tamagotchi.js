@@ -65,7 +65,7 @@ export class Tamagotchi {
     #setImage(index) {
         this.#imgNumber = index;
         this.#img.src = `/FE22-js2-mp2-Viktor-Johansson/imgs/${this.#type}_${index}.gif`
-        
+        console.log("här", this.#img.src);
         setTimeout(() => {
             this.#img.src = `/FE22-js2-mp2-Viktor-Johansson/imgs/${this.#type}_0.gif`
         }, index == 4 ? 1500 : 3000)
