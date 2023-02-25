@@ -9,6 +9,7 @@ export class Tamagotchi {
     #loadingComponent = [];
     #user;
     #interval;
+    #imgNumber = 0;
 
     constructor(user, name, type) {
         this.#user = user;
@@ -24,12 +25,12 @@ export class Tamagotchi {
     }
 
     #awake() {
-        let random = (Math.random() * 3000) + 2000;
+        let random = (Math.random() * 6000) + 3000;
         let count = 0;
         this.#interval = setInterval(() => {
             if (this.#happiness <= 0 || this.#hunger >= 10) {
                 this.#alive = false;
-                this.#img.src = `../../../imgs/${this.#type}_3.gif`
+                this.#img.src = `/./imgs/${this.#type}_3.gif`
                 setTimeout(() => {
                     this.#user.deleteTamagotchi(this);
                 }, 5000)
@@ -37,14 +38,16 @@ export class Tamagotchi {
                 if (this.#hunger <= 10) {
                     this.#hunger++;
                     this.loadComponent("Hunger");
-                    this.#setImage(4);
-                    
-                } 
-                if (this.#happiness >= 0 && count%2 === 0) {
+                }
+                if (this.#happiness >= 0 && count % 2 === 0) {
                     this.#happiness--;
                     this.loadComponent("Happiness")
-                    this.#setImage(4);
-                }  
+                    if (this.#imgNumber != 1 || this.#imgNumber != 2) {
+                        console.log(this.#imgNumber);
+                        this.#setImage(4);
+                    }
+                }
+                
                 count++;
                 console.log(this.#name + " status changed", this.#hunger, this.#happiness);
             }
@@ -60,27 +63,32 @@ export class Tamagotchi {
     }
 
     #setImage(index) {
-        this.#img.src = `../../../imgs/${this.#type}_${index}.gif`
-
+        this.#imgNumber = index;
+        this.#img.src = `/./imgs/${this.#type}_${index}.gif`
+        
         setTimeout(() => {
-            this.#img.src = `../../../imgs/${this.#type}_0.gif`
-        }, 2000)
+            this.#img.src = `/./imgs/${this.#type}_0.gif`
+        }, index == 4 ? 1500 : 3000)
+    }
+
+    getImageIndex() {
+        return this.#imgNumber;
     }
 
     loadComponent(value) {
         let comp = this.#loadingComponent[0];
-        switch(value) {
+        switch (value) {
             case "Happiness":
                 this.#loadingComponent[0].className = "loadComponent";
-                this.#loadingComponent[0].style.height = `${this.#happiness/2}rem`;
-                this.#loadingComponent[0].style.transform = `translateY(${(10-this.#happiness)/2}rem)`
-            break;
+                this.#loadingComponent[0].style.height = `${this.#happiness / 2}rem`;
+                this.#loadingComponent[0].style.transform = `translateY(${(10 - this.#happiness) / 2}rem)`
+                break;
             case "Hunger":
                 this.#loadingComponent[1].className = "loadComponent";
-                this.#loadingComponent[1].style.height = `${this.#hunger/2}rem`;
-                this.#loadingComponent[1].style.transform = `translateY(${(10-this.#hunger)/2}rem)`
+                this.#loadingComponent[1].style.height = `${this.#hunger / 2}rem`;
+                this.#loadingComponent[1].style.transform = `translateY(${(10 - this.#hunger) / 2}rem)`
                 comp = this.#loadingComponent[1];
-            break;
+                break;
         }
         return comp;
     }
@@ -99,7 +107,7 @@ export class Tamagotchi {
 
     entertain() {
         if (this.#alive) {
-            this.#happiness < 10 ? this.#happiness++ : 0; 
+            this.#happiness < 10 ? this.#happiness++ : 0;
             this.#setImage(1);
             this.loadComponent("Happiness");
             console.log("happiness: " + this.#happiness);
@@ -109,7 +117,7 @@ export class Tamagotchi {
     feed() {
         //Om den är hungrig minskar hungern när den blir matad. Om den är mätt men ändå får mat ökar vikten.
         if (this.#alive) {
-            this.#hunger >= 0 ? this.#hunger-- : this.#weight < 10 ? this.#weight++ : 0; 
+            this.#hunger >= 0 ? this.#hunger-- : this.#weight < 10 ? this.#weight++ : 0;
             this.#setImage(2);
             this.loadComponent("Hunger");
             console.log("hunger: " + this.#hunger + " | weight: " + this.#weight + "kg");

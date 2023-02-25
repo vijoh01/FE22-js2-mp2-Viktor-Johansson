@@ -7,30 +7,31 @@
 
 .tamagotchi {
     width: 10rem;
- 
+
     margin: 5rem;
 
 }
+
 .container {
-    
+
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
-  
-    justify-content: center;  
+
+    justify-content: center;
     padding-top: 1rem;
 }
 
 body {
     background-color: rgba(0, 0, 0, 0.701);
-    
+
 }
 
 .nameInput-container {
     background-color: rgb(255, 255, 255);
     display: flex;
     align-items: center;
-    
+
     justify-content: center;
     border-radius: 4rem;
     height: 3rem;
@@ -45,7 +46,7 @@ body {
     margin: 0 0.5rem 0 0.5rem;
     padding: 0 0.5rem 0 0.5rem;
 }
- 
+
 .nameInput-container .selectAnimal {
     margin-left: 0.5rem;
     padding: 0 0.5rem 0 0.5rem;
@@ -69,7 +70,7 @@ body {
     justify-self: center;
     margin-left: auto;
     margin-right: auto;
-    
+
 }
 
 .addContainer p {
@@ -81,14 +82,14 @@ body {
 
 .info-title {
     position: absolute;
-    
+
 }
 
 .loadingBar {
     height: 5rem;
     display: flex;
     justify-content: center;
-    
+
 }
 
 .barInfo {
@@ -97,12 +98,12 @@ body {
     justify-content: center;
     color: rgba(255, 255, 255, 0.822);
     font-size: 4rem;
-   
+
 }
 
 .barInfo i {
     font-size: 2rem;
-    
+
 }
 
 .hide {
@@ -110,9 +111,10 @@ body {
     visibility: hidden;
     display: none;
 }
+
 .nameContainer {
     position: absolute;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(10px);
     background-color: rgba(58, 9, 194, 0.307);
     display: flex;
     justify-content: center;
@@ -134,7 +136,7 @@ body {
     color: white;
     font-family: 'Tilt Warp', cursive;
     font-size: 1.2rem;
-    
+
     padding: 1rem 0 1rem 0;
 }
 
@@ -143,7 +145,7 @@ body {
     height: 2.5rem;
     padding-left: 1rem;
     margin: 1rem 0 1rem 0;
-    
+
 }
 
 .nameContainer button {
@@ -162,19 +164,21 @@ body {
     height: 7rem;
     padding-top: 1rem;
     background-color: rgba(255, 255, 255, 0.184);
-    
+
 }
+
 .loaders {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    
- 
+
+
 }
+
 .loadComponent {
     background-color: rebeccapurple;
     width: 0.5rem;
-    
+
     border-radius: 20%;
 }
 
@@ -209,11 +213,12 @@ body {
     height: 40rem;
 }
 
-.btnContainer, .infoContainer {
+.btnContainer,
+.infoContainer {
     width: 100%;
     display: flex;
     justify-content: space-around;
-  
+
 }
 
 .btnContainer {

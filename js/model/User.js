@@ -28,7 +28,7 @@ export class User {
                 break;
         }
     }
-    
+
     deleteTamagotchi(tamagotchi) {
         this.#tamagotchi.forEach((tama, i) => {
             if (tama === tamagotchi) {
