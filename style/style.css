@@ -6,8 +6,8 @@
 
 
 .tamagotchi {
-    width: 7rem;
-    margin: 5rem;
+    width: 5rem;
+
     image-rendering: pixelated;
 
     image-rendering: -webkit-optimize-contrast;
