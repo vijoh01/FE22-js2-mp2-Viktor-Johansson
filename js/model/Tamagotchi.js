@@ -30,7 +30,7 @@ export class Tamagotchi {
         this.#interval = setInterval(() => {
             if (this.#isDead()) {
                 this.#alive = false;
-                this.#img.src = `/./imgs/${this.#type}_3.gif`
+                this.#img.src = `/FE22-js2-mp2-Viktor-Johansson/imgs/${this.#type}_3.gif`
                 setTimeout(() => {
                     this.#user.deleteTamagotchi(this);
                 }, 5000)
@@ -64,14 +64,14 @@ export class Tamagotchi {
     }
 
     #setImage(index) {
-        this.#img.src = `/./imgs/${this.#type}_${index}.gif`;
+        this.#img.src = `/FE22-js2-mp2-Viktor-Johansson/imgs/${this.#type}_${index}.gif`;
         this.#img.style.width = 7 + this.#weight + "rem";
         this.#img.style.transition = "all 5s"
         this.#execution = false;
         
         setTimeout(() => {
             if (!this.#execution) { 
-            this.#img.src = `/./imgs/${this.#type}_0.gif`
+            this.#img.src = `/FE22-js2-mp2-Viktor-Johansson/imgs/${this.#type}_0.gif`
             this.#execution = true;
             }
         }, index == 4 ? 1500 : 3000)
