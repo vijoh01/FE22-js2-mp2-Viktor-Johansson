@@ -16,7 +16,6 @@ export class View {
         let info = document.createElement('div');
         info.className = "barInfo"
 
-
         switch (title) {
             case "Happiness":
                 let happiness = document.createElement('i');
@@ -24,7 +23,12 @@ export class View {
                 happiness.innerText = "sentiment_satisfied";
                 info.append(happiness);
                 break;
-
+            case "Weight":
+                let weight = document.createElement('i');
+                weight.className = "material-symbols-outlined";
+                weight.innerText = "weight";
+                info.append(weight);
+                break;
             case "Hunger":
                 let hunger = document.createElement('i');
                 hunger.className = "material-icons";
@@ -34,8 +38,6 @@ export class View {
         }
 
         loader.append(info);
-
-
     }
 
     #infoComponent(infoContainer, tamagotchi) {
@@ -46,6 +48,11 @@ export class View {
         happiness.className = "loader";
         infoContainer.append(this.#loadComponent(happiness, tamagotchi, "Hunger"));
         loader.append(happiness);
+
+        let weight = document.createElement('div');
+        weight.className = "loader";
+        infoContainer.append(this.#loadComponent(weight, tamagotchi, "Weight"));
+        loader.append(weight);
 
         let hunger = document.createElement('div');
         hunger.className = "loader";
@@ -87,10 +94,13 @@ export class View {
 
         let infoContainer = document.createElement('div');
         infoContainer.className = "infoContainer";
+        let imgContainer = document.createElement('div');
+        imgContainer.className = "imgContainer";
 
         frame.append(this.#infoComponent(infoContainer, tamagotchi));
 
-        frame.append(tamagotchi.getImage());
+        imgContainer.append(tamagotchi.getImage());
+        frame.append(imgContainer);
 
         let btnContainer = document.createElement('div');
         btnContainer.className = "btnContainer";

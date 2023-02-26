@@ -6,6 +6,7 @@ export class User {
     #tamagotchi;
     #user;
     #main;
+    
 
     constructor(main, name) {
         this.#main = main;

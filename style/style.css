@@ -6,12 +6,37 @@
 
 
 .tamagotchi {
-    width: 12rem;
-    padding 2rem 0 2rem 0;
-    image-rendering: pixelated;
+    width: 10rem;
+    animation-name: animation;
+    animation-duration: 10s;
 
-    image-rendering: -webkit-optimize-contrast;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
+
+@keyframes animation {
+    0% {
+        transform: translate(10px, 30px);
+        animation-timing-function:ease-in-out
+    }
+    25% {
+        transform: translate(0px, 20px);
+        animation-timing-function:ease-in-out
+    }
+    50% {
+        transform: translate(0px, 0px);
+        animation-timing-function:ease-in-out
+    }
+ 
+    75% {
+        transform: translate(-20px, 0px);
+        animation-timing-function:ease-in-out
+    }
+    100% {
+        transform: translate(-30px, 10px);
+        animation-timing-function:ease-in-out
+    }
+ }
 
 .container {
 
@@ -113,6 +138,16 @@ body {
     display: none;
 }
 
+.imgContainer {
+    min-height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
 .nameContainer {
     position: absolute;
     backdrop-filter: blur(10px);
@@ -165,7 +200,6 @@ body {
     height: 7rem;
     padding-top: 1rem;
     background-color: rgba(255, 255, 255, 0.184);
-
 }
 
 .loaders {
@@ -178,6 +212,7 @@ body {
 
 .loadComponent {
     background-color: rebeccapurple;
+    background-color: rgba(255, 0, 0, 0.637);
     width: 0.5rem;
 
     border-radius: 20%;
@@ -198,6 +233,7 @@ body {
 }
 
 .innerContainer {
+    
     background: radial-gradient(rgb(165, 43, 43), rgba(0, 0, 0, 0.639));
     backdrop-filter: blur(10px);
     display: flex;
