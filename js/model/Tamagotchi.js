@@ -25,7 +25,7 @@ export class Tamagotchi {
     }
 
     #awake() {
-        let random = (Math.random() * 6000) + 6000;
+        let random = (Math.random() * 2000) + 4000;
         let count = 0;
         this.#interval = setInterval(() => {
             if (this.#isDead()) {
@@ -94,7 +94,6 @@ export class Tamagotchi {
                 this.#loadingComponent[1].style.height = `${this.#weight / 2}rem`;
                 this.#loadingComponent[1].style.transform = `translateY(${(10 - this.#weight) / 2}rem)`
                 this.#loadingComponent[1].style.transition = "all 0.7s"
-                this.#loadingComponent[1].style.transition = "background 7s"
                 this.#weight > 7 ? this.#loadingComponent[1].style.background = `linear-gradient(180deg, rgba(255, 0, 0, 0.637), rgba(153, 146, 51, 0.517))` : this.#weight <= 6 ? this.#loadingComponent[1].style.background = `linear-gradient(0deg, rgba(255, 0, 0, 0.637), rgba(153, 146, 51, 0.517)` : `rgba(153, 146, 51, 0.517)`;
                 comp = this.#loadingComponent[1];
                 break;
