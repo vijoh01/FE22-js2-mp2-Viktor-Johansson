@@ -30,7 +30,7 @@ export class Tamagotchi {
         this.#interval = setInterval(() => {
             if (this.#isDead()) {
                 this.#alive = false;
-                this.#img.src = `/FE22-js2-mp2-Viktor-Johansson/imgs/${this.#type}_3.gif`
+                this.#img.src = `/./imgs/${this.#type}_3.gif`
                 setTimeout(() => {
                     this.#user.deleteTamagotchi(this);
                 }, 5000)
@@ -44,7 +44,7 @@ export class Tamagotchi {
                     this.loadComponent("Happiness")
                     this.#setImage(4);
                 }
-                
+
                 count++;
                 console.log(this.#name + " status changed", this.#hunger, this.#happiness);
             }
@@ -64,17 +64,19 @@ export class Tamagotchi {
     }
 
     #setImage(index) {
-        this.#img.src = `/FE22-js2-mp2-Viktor-Johansson/imgs/${this.#type}_${index}.gif`;
-        this.#img.style.width = 7 + this.#weight + "rem";
-        this.#img.style.transition = "all 5s"
-        this.#execution = false;
-        
-        setTimeout(() => {
-            if (!this.#execution) { 
-            this.#img.src = `/FE22-js2-mp2-Viktor-Johansson/imgs/${this.#type}_0.gif`
-            this.#execution = true;
-            }
-        }, index == 4 ? 1500 : 3000)
+        if (this.#alive) {
+            this.#img.src = `/./imgs/${this.#type}_${index}.gif`;
+            this.#img.style.width = 7 + this.#weight + "rem";
+            this.#img.style.transition = "all 5s"
+            this.#execution = false;
+
+            setTimeout(() => {
+                if ((!(this.#execution)) && this.#alive) {
+                    this.#img.src = `/./imgs/${this.#type}_0.gif`
+                    this.#execution = true;
+                }
+            }, index == 4 ? 1500 : 3000)
+        }
     }
 
     loadComponent(value) {
@@ -92,7 +94,8 @@ export class Tamagotchi {
                 this.#loadingComponent[1].style.height = `${this.#weight / 2}rem`;
                 this.#loadingComponent[1].style.transform = `translateY(${(10 - this.#weight) / 2}rem)`
                 this.#loadingComponent[1].style.transition = "all 0.7s"
-                this.#weight > 7 ? this.#loadingComponent[1].style.background = `linear-gradient(180deg, rgba(255, 0, 0, 0.637), rgba(153, 146, 51, 0.517))` : this.#weight <= 6 ? this.#loadingComponent[1].style.background = `linear-gradient(180deg, rgba(153, 146, 51, 0.517), rgba(255, 0, 0, 0.637)` : `rgba(153, 146, 51, 0.517)`;
+                this.#loadingComponent[1].style.transition = "background 7s"
+                this.#weight > 7 ? this.#loadingComponent[1].style.background = `linear-gradient(180deg, rgba(255, 0, 0, 0.637), rgba(153, 146, 51, 0.517))` : this.#weight <= 6 ? this.#loadingComponent[1].style.background = `linear-gradient(0deg, rgba(255, 0, 0, 0.637), rgba(153, 146, 51, 0.517)` : `rgba(153, 146, 51, 0.517)`;
                 comp = this.#loadingComponent[1];
                 break;
             case "Hunger":
